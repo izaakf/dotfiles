@@ -1,6 +1,5 @@
 " basic settings
 hi clear
-set makeprg=node\ %
 set nocompatible
 set autoread
 set hlsearch
