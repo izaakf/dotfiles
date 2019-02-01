@@ -38,10 +38,10 @@
   syntax enable
 
 " tab settings
-set tabstop=2
-set expandtab
-set shiftwidth=2
-set softtabstop=2
+  set tabstop=2
+  set expandtab
+  set shiftwidth=2
+  set softtabstop=2
 
 "Longer Set options
   set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-   " useful for cscope in quickfix
@@ -175,22 +175,24 @@ filetype plugin indent on
 
 
 " colorscheme, term colours, hidden chars and font
-colorscheme darkblue
-augroup filetype javascript syntax=javascript
-hi Normal guibg=NONE ctermbg=None ctermfg=None
-hi Constant ctermfg=None
-hi StatusLine ctermbg=none cterm=bold ctermfg=LightGrey
-hi Comment ctermfg=Blue
-hi Special ctermfg=Red
-hi LineNr ctermfg=Yellow
-hi Operator ctermfg=Yellow
-hi Error ctermbg=Red
-hi Boolean ctermfg=Red gui=italic
-highlight ExtraWhitespace ctermbg=red
-match ExtraWhitespace /\s\+$/
-set guifont=Consolas:h10
-set listchars=tab:>\ ,eol:¬,trail:.
-set statusline=%<\ %f\ %m%r%y%w%=%l\/%-6L\ %3c
+  colorscheme darkblue
+  augroup filetype javascript syntax=javascript
+  hi Normal guibg=NONE ctermbg=None ctermfg=None
+  hi Constant ctermfg=None
+  hi StatusLine ctermbg=none cterm=bold ctermfg=LightGrey
+  hi Search ctermbg=Yellow ctermfg=Black
+  hi Visual ctermbg=Black ctermfg=White
+  hi Comment ctermfg=Blue
+  hi Special ctermfg=Red
+  hi LineNr ctermfg=Yellow
+  hi Operator ctermfg=Yellow
+  hi Error ctermbg=Red
+  hi Boolean ctermfg=Red gui=italic
+  highlight ExtraWhitespace ctermbg=red
+  match ExtraWhitespace /\s\+$/
+  set guifont=Consolas:h10
+  set listchars=tab:>\ ,eol:¬,trail:.
+  set statusline=%<\ %f\ %m%r%y%w%=%l\/%-6L\ %3c
 
 
 " line numbering
