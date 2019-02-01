@@ -4,7 +4,6 @@
   set backspace=2           " allow backspacing over everything in insert mode
   set cindent               " c code indenting
   set diffopt=filler,iwhite " keep files synced and ignore whitespace
-  set expandtab             " get rid of tabs altogether and replace with spaces
   set foldlevel=0           " show contents of all folds
   set foldcolumn=0
   set foldmethod=indent     " use indent unless overridden
@@ -25,10 +24,8 @@
   set ttimeoutlen=100       " timeout on key-codes after 100ms
   set ruler                 " the ruler on the bottom is useful
   set scrolloff=1           " dont let the curser get too close to the edge
-  set shiftwidth=4          " set indention level to be the same as softtabstop
   set showcmd               " show (partial) command in status line.
   set showmatch             " show matching brackets.
-  set softtabstop=4         " why are tabs so big?  this fixes it
   set textwidth=0           " don't wrap words by default
   set textwidth=80          " this wraps a line with a break when you reach 80 chars
   set virtualedit=block     " let blocks be in virutal edit mode
@@ -40,6 +37,11 @@
   set nowrap
   syntax enable
 
+" tab settings
+set tabstop=2
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 
 "Longer Set options
   set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-   " useful for cscope in quickfix
@@ -136,7 +138,8 @@ endif
 " plugin settings
 """""""""""""""""""""
 " nerdtree
-map <C-e> :NERDTreeToggle<CR>
+autocmd BufEnter *lcd %:p:h
+map <C-e> :NERDTreeToggle .<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " syntastic
@@ -170,12 +173,6 @@ Plugin 'VundleVim/Vundle.vim'
 call vundle#end()
 filetype plugin indent on
 
-" tab settings
-set tabstop=2
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-
 
 " colorscheme, term colours, hidden chars and font
 colorscheme darkblue
@@ -198,7 +195,7 @@ set statusline=%<\ %f\ %m%r%y%w%=%l\/%-6L\ %3c
 
 " line numbering
 set number relativenumber
-
+set nu
 autocmd InsertEnter * set nornu
 autocmd InsertLeave * set rnu
 autocmd WinEnter * set rnu
@@ -209,4 +206,3 @@ nmap <S-k> ddkP
 nmap <S-j> ddp
 vmap <S-k> xkP`[V`]
 vmap <S-j> xp`[V`]
-
