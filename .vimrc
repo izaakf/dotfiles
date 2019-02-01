@@ -197,7 +197,6 @@ filetype plugin indent on
 
 " line numbering
 set number relativenumber
-set nu
 autocmd InsertEnter * set nornu
 autocmd InsertLeave * set rnu
 autocmd WinEnter * set rnu
