@@ -50,7 +50,6 @@
   set whichwrap+=<,>,[,],h,l,~                 " arrow keys can wrap in normal and insert modes
   set wildmode=list:longest,full               " list all options, match to the longest
 
-  set guifont=Courier\ 10\ Pitch\ 10
   set path+=.,..,../..,../../..,../../../..,/usr/include
 
   " Suffixes that get lower priority when doing tab completion for filenames.
