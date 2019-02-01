@@ -198,7 +198,7 @@ set statusline=%<\ %f\ %m%r%y%w%=%l\/%-6L\ %3c
 
 " line numbering
 set number relativenumber
-set nu
+
 autocmd InsertEnter * set nornu
 autocmd InsertLeave * set rnu
 autocmd WinEnter * set rnu
