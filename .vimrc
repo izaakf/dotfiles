@@ -160,7 +160,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-vinegar'
+"Plugin 'tpope/vim-vinegar'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'vim-syntastic/syntastic'
