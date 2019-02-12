@@ -221,4 +221,8 @@ endif
   nmap <S-j> ddp
   vmap <S-k> xkP`[V`]
   vmap <S-j> xp`[V`]
-  
+
+" key bindings
+  nnoremap <S-tab>  :tabprevious<CR>
+  nnoremap <tab>    :tabnext<CR>
+  nnoremap <C-t>    :tabnew<CR>
