@@ -47,7 +47,6 @@
   set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-   " useful for cscope in quickfix
   set listchars=tab:>-,trail:-                 " prefix tabs with a > and trails with -
   set tags+=./.tags;/,./tags;/                 " set ctags
-  set whichwrap+=<,>,[,],h,l,~                 " arrow keys can wrap in normal and insert modes
   set wildmode=list:longest,full               " list all options, match to the longest
 
   set path+=.,..,../..,../../..,../../../..,/usr/include
@@ -136,73 +135,90 @@ endif
 
 " plugin settings
 """""""""""""""""""""
-" nerdtree
-autocmd BufEnter *lcd %:p:h
-map <C-e> :NERDTreeToggle .<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+  " nerdtree
+    autocmd BufEnter *lcd %:p:h
+    map <C-e> :NERDTreeToggle .<CR>
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+  " syntastic
+    "set statusline+=%#warningmsg#
+    "set statusline+=%{SyntasticStatuslineFlag()}
+    "set statusline+=%*
+    "let g:syntastic_always_populate_loc_list = 1
+    "let g:syntastic_auto_loc_list = 1
+    "let g:syntastic_check_on_open = 1
+    "let g:syntastic_check_on_wq = 0
 
+  " CtrlP
+    map <C-a> :CtrlP .<CR>
 """""""""""""""""""""
-" CtrlP
-map <C-a> :CtrlP .<CR>
-"""""""""""""""""""""
+
 " vundle setup
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'scrooloose/nerdtree'
-"Plugin 'tpope/vim-vinegar'
-Plugin 'pangloss/vim-javascript'
-Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'vim-syntastic/syntastic'
-Plugin 'ternjs/tern_for_vim'
-Plugin 'ap/vim-css-color'
-Plugin 'isRuslan/vim-es6'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'VundleVim/Vundle.vim'
-call vundle#end()
-filetype plugin indent on
+  filetype off
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'pangloss/vim-javascript'
+  Plugin 'mxw/vim-jsx'
+  Plugin 'ctrlpvim/ctrlp.vim'
+  Plugin 'ternjs/tern_for_vim'
+  Plugin 'ap/vim-css-color'
+  Plugin 'isRuslan/vim-es6'
+  Plugin 'scrooloose/nerdcommenter'
+  Plugin 'vim-ruby/vim-ruby'
+  Plugin 'VundleVim/Vundle.vim'
+  "Plugin 'tpope/vim-vinegar'
+  "Plugin 'vim-syntastic/syntastic'
+  call vundle#end()
+  filetype plugin indent on
 
 
 " colorscheme, term colours, hidden chars and font
   colorscheme darkblue
   augroup filetype javascript syntax=javascript
-  hi Normal guibg=NONE ctermbg=None ctermfg=None
+  hi Normal ctermbg=None ctermfg=White
   hi Constant ctermfg=None
   hi StatusLine ctermbg=none cterm=bold ctermfg=LightGrey
-  hi Search ctermbg=Yellow ctermfg=Black
+  hi Search ctermbg=White ctermfg=Black
   hi Visual ctermbg=Black ctermfg=White
-  hi Comment ctermfg=Blue
-  hi Special ctermfg=Red
-  hi LineNr ctermfg=Yellow
+  hi Comment ctermfg=60
+  hi Special ctermfg=LightBlue
+  hi IncSearch ctermbg=Black ctermfg=White
+  hi CursorLineNr ctermfg=LightGrey
+  hi LineNr ctermfg=DarkGrey
   hi Operator ctermfg=Yellow
   hi Error ctermbg=Red
-  hi Boolean ctermfg=Red gui=italic
+  hi Boolean ctermfg=Red
+  hi Type ctermfg=170
+  hi NonText ctermfg=White
+  hi ErrorMsg ctermbg=Red ctermfg=White
+  hi PmenuThumb ctermbg=15 ctermfg=Black
+  hi ModeMsg ctermfg=White
   highlight ExtraWhitespace ctermbg=red
   match ExtraWhitespace /\s\+$/
   set guifont=Consolas:h10
   set listchars=tab:>\ ,eol:¬,trail:.
   set statusline=%<\ %f\ %m%r%y%w%=%l\/%-6L\ %3c
 
+" language specific
+  hi jsImport ctermfg=LightGrey
+  hi jsFrom ctermfg=LightGrey
+  hi jsModuleAs ctermfg=LightGrey
+  hi jsExport ctermfg=LightBlue
+  hi jsThis ctermbg=None ctermfg=White
+  hi jsReturn ctermfg=Yellow
+  hi jsNull ctermfg=Red
 
 " line numbering
-set number relativenumber
-autocmd InsertEnter * set nornu
-autocmd InsertLeave * set rnu
-autocmd WinEnter * set rnu
-autocmd WinLeave * set nornu
+  set number relativenumber
+  autocmd InsertEnter * set nornu
+  autocmd InsertLeave * set rnu
+  autocmd WinEnter * set rnu
+  autocmd WinLeave * set nornu
 
 " text bubbling
-nmap <S-k> ddkP
-nmap <S-j> ddp
-vmap <S-k> xkP`[V`]
-vmap <S-j> xp`[V`]
+  nmap <S-k> ddkP
+  nmap <S-j> ddp
+  vmap <S-k> xkP`[V`]
+  vmap <S-j> xp`[V`]
+  
