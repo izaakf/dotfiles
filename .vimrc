@@ -161,7 +161,6 @@ endif
   Plugin 'pangloss/vim-javascript'
   Plugin 'mxw/vim-jsx'
   Plugin 'ctrlpvim/ctrlp.vim'
-  Plugin 'ternjs/tern_for_vim'
   Plugin 'ap/vim-css-color'
   Plugin 'isRuslan/vim-es6'
   Plugin 'scrooloose/nerdcommenter'
@@ -226,3 +225,4 @@ endif
   nnoremap <S-tab>  :tabprevious<CR>
   nnoremap <tab>    :tabnext<CR>
   nnoremap <C-t>    :tabnew<CR>
+
