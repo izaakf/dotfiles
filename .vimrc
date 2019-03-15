@@ -149,8 +149,19 @@ endif
     "let g:syntastic_check_on_open = 1
     "let g:syntastic_check_on_wq = 0
 
-  " CtrlP
-    map <C-a> :CtrlP .<CR>
+  " Ale
+  nnoremap <S-a>  :ALEToggle<CR>
+
+  " vim-node
+    autocmd User Node
+  \ if &filetype == "javascript" |
+  \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile |
+  \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
+  \ endif
+
+  " FzF
+    set rtp+=~/.fzf
+    map <C-a> :Files .<CR>
 """""""""""""""""""""
 
 " vundle setup
@@ -160,14 +171,17 @@ endif
   Plugin 'scrooloose/nerdtree'
   Plugin 'pangloss/vim-javascript'
   Plugin 'mxw/vim-jsx'
-  Plugin 'ctrlpvim/ctrlp.vim'
+  Plugin 'junegunn/fzf.vim'
   Plugin 'ap/vim-css-color'
   Plugin 'isRuslan/vim-es6'
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'VundleVim/Vundle.vim'
-  "Plugin 'tpope/vim-vinegar'
-  "Plugin 'vim-syntastic/syntastic'
+  Plugin 'vim-scripts/TeTrIs.vim'
+  Plugin 'w0rp/ale'
+  Plugin 'moll/vim-node'
+  Plugin 'rstacruz/vim-node-import'
+  Plugin 'itchyny/lightline.vim'
   call vundle#end()
   filetype plugin indent on
 
@@ -222,7 +236,9 @@ endif
   vmap <S-j> xp`[V`]
 
 " key bindings
+  " tabs
   nnoremap <S-tab>  :tabprevious<CR>
   nnoremap <tab>    :tabnext<CR>
   nnoremap <C-t>    :tabnew<CR>
-
+  " stop highlighting for :hlsearch
+  nnoremap <C-x>    :noh<CR>
