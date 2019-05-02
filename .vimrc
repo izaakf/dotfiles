@@ -1,105 +1,107 @@
+source /apollo/env/envImprovement/var/vimrc
+
 " standard vim options
-  hi clear
-  set autoindent            " always set autoindenting on
-  set backspace=2           " allow backspacing over everything in insert mode
-  set cindent               " c code indenting
-  set diffopt=filler,iwhite " keep files synced and ignore whitespace
-  set foldlevel=0           " show contents of all folds
-  set foldcolumn=0
-  set foldmethod=indent     " use indent unless overridden
-  set guioptions-=m         " remove menu from the gui
-  set guioptions-=t         " remove toolbar
-  set hidden                " hide buffers instead of closing
-  set history=50            " keep 50 lines of command line history
-  set ignorecase            " do case insensitive matching
-  set incsearch             " incremental search
-  set laststatus=2          " always have status bar
-  set linebreak             " this displays long lines as wrapped at word boundries
-  set matchtime=10          " time to flash the brack with showmatch
-  set nobackup              " don't keep a backup file
-  set nocompatible          " use vim defaults (much better!)
-  set nofen                 " disable folds
-  set notimeout             " i like to be pokey
-  set ttimeout              " timeout on key-codes
-  set ttimeoutlen=100       " timeout on key-codes after 100ms
-  set ruler                 " the ruler on the bottom is useful
-  set scrolloff=1           " dont let the curser get too close to the edge
-  set showcmd               " show (partial) command in status line.
-  set showmatch             " show matching brackets.
-  set textwidth=0           " don't wrap words by default
-  set textwidth=80          " this wraps a line with a break when you reach 80 chars
-  set virtualedit=block     " let blocks be in virutal edit mode
-  set wildmenu              " this is used with wildmode(full) to cycle options
-  set autoread
-  set hlsearch
-  set noswapfile
-  set autowrite
-  set nowrap
-  syntax enable
+hi clear
+set autoindent            " always set autoindenting on
+set backspace=2           " allow backspacing over everything in insert mode
+set cindent               " c code indenting
+set diffopt=filler,iwhite " keep files synced and ignore whitespace
+set foldlevel=0           " show contents of all folds
+set foldcolumn=0
+set foldmethod=indent     " use indent unless overridden
+set guioptions-=m         " remove menu from the gui
+set guioptions-=t         " remove toolbar
+set hidden                " hide buffers instead of closing
+set history=50            " keep 50 lines of command line history
+set ignorecase            " do case insensitive matching
+set incsearch             " incremental search
+set laststatus=2          " always have status bar
+set linebreak             " this displays long lines as wrapped at word boundries
+set matchtime=10          " time to flash the brack with showmatch
+set nobackup              " don't keep a backup file
+set nocompatible          " use vim defaults (much better!)
+set nofen                 " disable folds
+set notimeout             " i like to be pokey
+set ttimeout              " timeout on key-codes
+set ttimeoutlen=100       " timeout on key-codes after 100ms
+set ruler                 " the ruler on the bottom is useful
+set scrolloff=1           " dont let the curser get too close to the edge
+set showcmd               " show (partial) command in status line.
+set showmatch             " show matching brackets.
+set textwidth=0           " don't wrap words by default
+set textwidth=80          " this wraps a line with a break when you reach 80 chars
+set virtualedit=block     " let blocks be in virutal edit mode
+set wildmenu              " this is used with wildmode(full) to cycle options
+set autoread
+set hlsearch
+set noswapfile
+set autowrite
+set nowrap
+syntax enable
 
 " tab settings
-  set tabstop=2
-  set expandtab
-  set shiftwidth=2
-  set softtabstop=2
+set tabstop=2
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 
 "Longer Set options
-  set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-   " useful for cscope in quickfix
-  set listchars=tab:>-,trail:-                 " prefix tabs with a > and trails with -
-  set tags+=./.tags;/,./tags;/                 " set ctags
-  set wildmode=list:longest,full               " list all options, match to the longest
+set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-   " useful for cscope in quickfix
+set listchars=tab:>-,trail:-                 " prefix tabs with a > and trails with -
+set tags+=./.tags;/,./tags;/                 " set ctags
+set wildmode=list:longest,full               " list all options, match to the longest
 
-  set path+=.,..,../..,../../..,../../../..,/usr/include
+set path+=.,..,../..,../../..,../../../..,/usr/include
 
-  " Suffixes that get lower priority when doing tab completion for filenames.
-  " These are files I am not likely to want to edit or read.
-  set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.class
+" Suffixes that get lower priority when doing tab completion for filenames.
+" These are files I am not likely to want to edit or read.
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.class
 
 " viminfo options
-  " read/write a .viminfo file, don't store more than
-  " 50 lines of registers
-  set viminfo='20,\"50
+" read/write a .viminfo file, don't store more than
+" 50 lines of registers
+set viminfo='20,\"50
 
 "Set variables for plugins to use
 
-  "vimspell variables
-    "don't automatically spell check!
-    let spell_auto_type=""
+"vimspell variables
+"don't automatically spell check!
+let spell_auto_type=""
 
-  "taglist.vim settings
-  if exists("g:useNinjaTagList") && g:useNinjaTagList == 1
-    set updatetime=1000 "interval to update list window
+"taglist.vim settings
+if exists("g:useNinjaTagList") && g:useNinjaTagList == 1
+  set updatetime=1000 "interval to update list window
 
-    let Tlist_Auto_Open=1 "Auto open the list window
-    let Tlist_Compact_Format=1
-    let Tlist_Ctags_Cmd = g:ApolloRoot . '/bin/ctags' "Ctags binary to use
-    let Tlist_Enable_Fold_Column=0 "Turn off the fold column for list window
-    let Tlist_Exit_OnlyWindow=1 "Exit if list is only window
-    let Tlist_File_Fold_Auto_Close=1
-    let Tlist_Show_Menu=1 "Show tag menu in gvim
-    let Tlist_Use_Right_Window = 1 "put list window on the rigth
+  let Tlist_Auto_Open=1 "Auto open the list window
+  let Tlist_Compact_Format=1
+  let Tlist_Ctags_Cmd = g:ApolloRoot . '/bin/ctags' "Ctags binary to use
+  let Tlist_Enable_Fold_Column=0 "Turn off the fold column for list window
+  let Tlist_Exit_OnlyWindow=1 "Exit if list is only window
+  let Tlist_File_Fold_Auto_Close=1
+  let Tlist_Show_Menu=1 "Show tag menu in gvim
+  let Tlist_Use_Right_Window = 1 "put list window on the rigth
 
-    "maps to close, and open list window
-    map <silent> <Leader>tc :TlistClose<CR>
-    map <silent> <Leader>to :TlistOpen<CR>
-  endif
+  "maps to close, and open list window
+  map <silent> <Leader>tc :TlistClose<CR>
+  map <silent> <Leader>to :TlistOpen<CR>
+endif
 
-  " LargeFile.vim settings
-  " don't run syntax and other expensive things on files larger than NUM megs
-  let g:LargeFile = 100
+" LargeFile.vim settings
+" don't run syntax and other expensive things on files larger than NUM megs
+let g:LargeFile = 100
 
 "Turn on filetype plugins to automagically
-  "Grab commands for particular filetypes.
-  "Grabbed from $VIM/ftplugin
-  filetype plugin on
-  filetype indent on
+"Grab commands for particular filetypes.
+"Grabbed from $VIM/ftplugin
+filetype plugin on
+filetype indent on
 
 "map \e to edit a file from the directory of the current buffer
-  if has("unix")
-    nmap <leader>e :e <c-r>=expand("%:p:h") . "/"<cr>
-  else
-    nmap <leader>,e :e <c-r>=expand("%:p:h") . "\\"<cr>
-    endif
+if has("unix")
+  nmap <leader>e :e <c-r>=expand("%:p:h") . "/"<cr>
+else
+  nmap <leader>,e :e <c-r>=expand("%:p:h") . "\\"<cr>
+endif
 
 "When editing a file, make screen display the name of the file you are editing
 "Enabled by default. Either unlet variable or set to 0 in your .vimrc to disable.
@@ -119,76 +121,89 @@ endfunction
 autocmd BufEnter,BufFilePost * call SetTitle()
 
 "Automatically delete trailing whitespace on write for specified filetypes
-  " grab the file list from the variable g:EnvImprovement_DeleteWsFiletypes
-  " the variable should be of type list
+" grab the file list from the variable g:EnvImprovement_DeleteWsFiletypes
+" the variable should be of type list
 function! DeleteTrailingWhitespace()
-    let l:EnvImprovement_SaveCursor = getpos('.')
-    %s/\s\+$//e
-    call setpos('.', l:EnvImprovement_SaveCursor)
+  let l:EnvImprovement_SaveCursor = getpos('.')
+  %s/\s\+$//e
+  call setpos('.', l:EnvImprovement_SaveCursor)
 endfunction
 
 if exists("g:EnvImprovement_DeleteWsFiletypes") && !empty(g:EnvImprovement_DeleteWsFiletypes)
-    let filetypeString = join(g:EnvImprovement_DeleteWsFiletypes, ',')
-    execute 'autocmd FileType ' . filetypeString  . ' autocmd BufWritePre <buffer> :call DeleteTrailingWhitespace()'
+  let filetypeString = join(g:EnvImprovement_DeleteWsFiletypes, ',')
+  execute 'autocmd FileType ' . filetypeString  . ' autocmd BufWritePre <buffer> :call DeleteTrailingWhitespace()'
 endif
 
 
 " plugin settings
 """""""""""""""""""""
-  " nerdtree
-    autocmd BufEnter *lcd %:p:h
-    map <C-e> :NERDTreeToggle .<CR>
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" nerdtree
+autocmd BufEnter *lcd %:p:h
+map <C-e> :NERDTreeToggle .<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-  " syntastic
-    "set statusline+=%#warningmsg#
-    "set statusline+=%{SyntasticStatuslineFlag()}
-    "set statusline+=%*
-    "let g:syntastic_always_populate_loc_list = 1
-    "let g:syntastic_auto_loc_list = 1
-    "let g:syntastic_check_on_open = 1
-    "let g:syntastic_check_on_wq = 0
+" syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
-  " Ale
-  nnoremap <S-a>  :ALEToggle<CR>
+"Ale
+"nnoremap <S-a>  :ALEToggle<CR>
 
-  " vim-node
-    autocmd User Node
-  \ if &filetype == "javascript" |
-  \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile |
-  \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
-  \ endif
+" lightline
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ }
+      \ }
 
-  " FzF
-    set rtp+=~/.fzf
-    map <C-a> :Files .<CR>
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
+
+" FzF
+set rtp+=~/.fzf
+map <C-a> :Files .<CR>
 """""""""""""""""""""
 
 " vundle setup
-  filetype off
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'pangloss/vim-javascript'
-  Plugin 'mxw/vim-jsx'
-  Plugin 'junegunn/fzf.vim'
-  Plugin 'ap/vim-css-color'
-  Plugin 'isRuslan/vim-es6'
-  Plugin 'scrooloose/nerdcommenter'
-  Plugin 'vim-ruby/vim-ruby'
-  Plugin 'VundleVim/Vundle.vim'
-  Plugin 'vim-scripts/TeTrIs.vim'
-  Plugin 'w0rp/ale'
-  Plugin 'moll/vim-node'
-  Plugin 'rstacruz/vim-node-import'
-  Plugin 'itchyny/lightline.vim'
-  call vundle#end()
-  filetype plugin indent on
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'scrooloose/nerdtree'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'junegunn/fzf.vim'
+Plugin 'ap/vim-css-color'
+Plugin 'isRuslan/vim-es6'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-scripts/TeTrIs.vim'
+"Plugin 'w0rp/ale'
+Plugin 'moll/vim-node'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+"Plugin 'rstacruz/vim-node-import'
+Plugin 'itchyny/lightline.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mtscout6/vim-cjsx'
+call vundle#end()
+filetype plugin indent on
 
 
 " colorscheme, term colours, hidden chars and font
-  colorscheme darkblue
-  augroup filetype javascript syntax=javascript
+colorscheme darkblue
+augroup filetype javascript syntax=javascript
   hi Normal ctermbg=None ctermfg=White
   hi Constant ctermfg=None
   hi StatusLine ctermbg=none cterm=bold ctermfg=LightGrey
@@ -213,7 +228,7 @@ endif
   set listchars=tab:>\ ,eol:¬,trail:.
   set statusline=%<\ %f\ %m%r%y%w%=%l\/%-6L\ %3c
 
-" language specific
+  " language specific
   hi jsImport ctermfg=LightGrey
   hi jsFrom ctermfg=LightGrey
   hi jsModuleAs ctermfg=LightGrey
@@ -222,20 +237,20 @@ endif
   hi jsReturn ctermfg=Yellow
   hi jsNull ctermfg=Red
 
-" line numbering
+  " line numbering
   set number relativenumber
   autocmd InsertEnter * set nornu
   autocmd InsertLeave * set rnu
   autocmd WinEnter * set rnu
   autocmd WinLeave * set nornu
 
-" text bubbling
+  " text bubbling
   nmap <S-k> ddkP
   nmap <S-j> ddp
   vmap <S-k> xkP`[V`]
   vmap <S-j> xp`[V`]
 
-" key bindings
+  " key bindings
   " tabs
   nnoremap <S-tab>  :tabprevious<CR>
   nnoremap <tab>    :tabnext<CR>
