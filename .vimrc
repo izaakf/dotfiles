@@ -1,5 +1,3 @@
-source /apollo/env/envImprovement/var/vimrc
-
 " standard vim options
 hi clear
 set autoindent            " always set autoindenting on
