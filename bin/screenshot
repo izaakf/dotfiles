@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+if [ "$1" ==  "--select" ]; then
+    scrot "/tmp/%Y%m%d_%H%M%S.png" -s -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
+else
+    scrot "/tmp/%Y%m%d_%H%M%S.png" -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
+fi
