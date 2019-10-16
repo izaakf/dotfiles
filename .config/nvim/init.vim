@@ -140,28 +140,25 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/zfreeman/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/home/zak/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/zfreeman/.cache/dein')
-  call dein#begin('/Users/zfreeman/.cache/dein')
+if dein#load_state('/home/zak/.cache/dein')
+  call dein#begin('/home/zak/.cache/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/zfreeman/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('/home/zak/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here like this:
-  "call dein#add('scrooloose/nerdtree')
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
   call dein#add('junegunn/fzf.vim')
   call dein#add('ap/vim-css-color')
-  "call dein#add('majutsushi/tagbar')
   call dein#add('tpope/vim-vinegar')
   call dein#add('scrooloose/nerdcommenter')
   call dein#add('vim-scripts/TeTrIs.vim')
   call dein#add('w0rp/ale')
-  call dein#add('moll/vim-node')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-surround')
   call dein#add('itchyny/lightline.vim')
@@ -222,8 +219,8 @@ function! LightlineFilename()
 endfunction
 
 " FzF
-set rtp+=/usr/local/opt/fzf
-"set rtp+=~/.fzf
+"set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
 map <C-a> :Files .<CR>
 """""""""""""""""""""
 
