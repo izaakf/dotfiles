@@ -41,7 +41,7 @@ syntax enable
 " tab settings
 set tabstop=2
 set expandtab
-set shiftwidth=4
+set shiftwidth=2
 set softtabstop=2
 
 "Longer Set options
@@ -152,7 +152,7 @@ if dein#load_state('/home/zak/.cache/dein')
 
   " Add or remove your plugins here like this:
   call dein#add('pangloss/vim-javascript')
-  call dein#add('mxw/vim-jsx')
+  call dein#add('MaxMEllon/vim-jsx-pretty')
   call dein#add('junegunn/fzf.vim')
   call dein#add('ap/vim-css-color')
   call dein#add('tpope/vim-vinegar')
@@ -163,6 +163,11 @@ if dein#load_state('/home/zak/.cache/dein')
   call dein#add('tpope/vim-surround')
   call dein#add('itchyny/lightline.vim')
   call dein#add('alvan/vim-closetag')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
 
   " Required:
   call dein#end()
@@ -180,24 +185,20 @@ endif
 
 "End dein Scripts-------------------------
 
-
-
-
 " plugin settings
 """""""""""""""""""""
-" nerdtree
-"autocmd BufEnter *lcd %:p:h
-"map <C-e> :NERDTreeToggle .<CR>
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+" vim closetag
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx,*.js"
+"let g:closetag_shortcut = '>'
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" vim-jsx-pretty
+let g:vim_jsx_pretty_highlight_close_tag = 1
 
 "Ale
 nnoremap <S-a>  :ALEToggle<CR>
@@ -277,7 +278,7 @@ augroup filetype javascript syntax=javascript
   " tagbar
   "nnoremap <C-S>    :TagbarToggle<CR>
   " tabs
-  nnoremap <S-tab>  :tabprevious<CR>
+  nnoremap <S-tab>    :tabprevious<CR>
   nnoremap <tab>    :tabnext<CR>
   nnoremap <C-t>    :tabnew<CR>
   " stop highlighting for :hlsearch
