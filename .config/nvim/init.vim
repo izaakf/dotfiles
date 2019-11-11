@@ -161,8 +161,10 @@ if dein#load_state('/home/zak/.cache/dein')
   call dein#add('w0rp/ale')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-surround')
-  call dein#add('itchyny/lightline.vim')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('neovimhaskell/haskell-vim')
   call dein#add('alvan/vim-closetag')
+  call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -187,6 +189,8 @@ endif
 
 " plugin settings
 """""""""""""""""""""
+" COC
+let g:ruby_host_prog = '/home/zak/.gem/ruby/2.6.0/bin/neovim-ruby-host'
 
 " vim closetag
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx,*.js"
@@ -201,28 +205,37 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:vim_jsx_pretty_highlight_close_tag = 1
 
 "Ale
-nnoremap <S-a>  :ALEToggle<CR>
+nnoremap <C-l>  :ALEToggle<CR>
+
+"haskell vim
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
 " lightline
-let g:lightline = {
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \ }
-      \ }
+"let g:lightline = {
+      "\ 'component_function': {
+      "\   'filename': 'LightlineFilename',
+      "\ }
+      "\ }
 
-function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
-endfunction
+"function! LightlineFilename()
+  "let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  "let path = expand('%:p')
+  "if path[:len(root)-1] ==# root
+    "return path[len(root)+1:]
+  "endif
+  "return expand('%')
+  "endfunction
 
 " FzF
 "set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
-map <C-a> :Files .<CR>
+map <C-p> :Files .<CR>
 """""""""""""""""""""
 
 " colorscheme, term colours, hidden chars and font
@@ -282,5 +295,6 @@ augroup filetype javascript syntax=javascript
   nnoremap <tab>    :tabnext<CR>
   nnoremap <C-t>    :tabnew<CR>
   " stop highlighting for :hlsearch
-  nnoremap <C-x>    :noh<CR>
+  nnoremap <C-S-a>    :noh<CR>
   :set mouse=a
+  autocmd BufEnter * :syntax sync fromstart

@@ -14,7 +14,7 @@ set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Source Code Pro 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -35,9 +35,11 @@ for_window [class="^.*"] border pixel 0
 gaps inner 9
 smart_borders on
 
-#lock screen
-bindsym $mod+Delete exec --no-startup-id scrot -m /tmp/lock.png && /home/zak/bin/circle_image /tmp/lock.png /tmp/lock.png 14 && i3lock -i /tmp/lock.png
+# lock screen
+bindsym $mod+Delete exec --no-startup-id i3lock -i /home/zak/wallpapers/tms.png
 
+# set wallpaper
+exec --no-startup-id feh --randomize --bg-fill ~/wallpapers/
 
 # start a terminal
 bindsym $mod+Return exec termite
@@ -207,7 +209,7 @@ mode $mode_move_floating {
 
 mode $mode_scrot {
     bindsym n           exec "screenshot";          mode "default"
-    bindsym --release s exec "screenshot --select"; mode "default"
+    bindsym --release s exec "maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -241,10 +243,10 @@ mode $mode_gaps_outer {
     bindsym Escape mode "default"
 }
 
-## keybindings (scratchpad)
+# keybindings (scratchpad)
 bindsym F1 [class="URxvt" instance="^scratch$"] scratchpad show, move position center
 
-## keeping programs floating/fullscreen
+# keeping programs floating/fullscreen
 for_window [class="URxvt" instance="^scratch$"] floating enable, resize set 1292 694, move scratchpad, border pixel 2
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -257,8 +259,8 @@ bar {
         }
 }
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id "ponymix increase 5%"
-bindsym XF86AudioLowerVolume exec --no-startup-id "ponymix decrease 5%"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "ponymix increase 5"
+bindsym XF86AudioLowerVolume exec --no-startup-id "ponymix decrease 5"
 bindsym XF86AudioMute exec --no-startup-id    "ponymix toggle"
 
 exec termite --role scratch
